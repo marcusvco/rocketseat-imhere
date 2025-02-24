@@ -3,37 +3,42 @@ import { styles } from "./styles"
 import { SafeAreaView } from "react-native-safe-area-context"
 import { Button } from "../components/button"
 import { ParticipantCard } from "../components/participant-card"
+import { useState } from "react"
+import uuid from "react-native-uuid"
 
 interface Participant {
-  id: number
+  id: string
   name: string
 }
 
 export default function Index() {
-  let participants: Participant[] = [
-    { id: 1, name: "João" },
-    { id: 2, name: "Maria" },
-    { id: 3, name: "José" },
-    { id: 4, name: "Ana" },
-    { id: 5, name: "Carlos" },
-    { id: 6, name: "Mariana" },
-    { id: 7, name: "Pedro" },
-    { id: 8, name: "Paula" },
-    { id: 9, name: "Lucas" },
-    { id: 10, name: "Laura" },
-  ]
+  const [participants, setParticipants] = useState<Participant[]>([])
+  const [participantName, setParticipantName] = useState("")
 
-  function handleRemoveParticipant(id: number) {
+  function handleAddParticipant(name: string) {
+    if (!name) {
+      Alert.alert("Nome inválido", "O nome do participante não pode ser vazio")
+      return
+    }
+
+    const newParticipant: Participant = {
+      id: uuid.v4(),
+      name,
+    }
+
+    setParticipants([...participants, newParticipant])
+  }
+
+  function handleRemoveParticipant(id: string) {
     Alert.alert("Remover participante", "Deseja remover este participante?", [
       { text: "Cancelar", style: "cancel" },
       {
         text: "Remover",
         style: "destructive",
         onPress: () => {
-          participants = participants.filter(
-            (participant) => participant.id !== id
+          setParticipants(
+            participants.filter((participant) => participant.id !== id)
           )
-          // setParticipants([...participants])
         },
       },
     ])
@@ -48,8 +53,14 @@ export default function Index() {
           style={styles.input}
           placeholder="Nome do participante"
           placeholderTextColor="#6b6b6b"
+          onChangeText={setParticipantName}
+          value={participantName}
         />
-        <Button children="+" color="#31cf67" onPress={() => {}} />
+        <Button
+          children="+"
+          color="#31cf67"
+          onPress={() => handleAddParticipant(participantName)}
+        />
       </View>
       <FlatList
         style={styles.participants}
