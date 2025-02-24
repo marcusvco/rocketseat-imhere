@@ -1,5 +1,5 @@
 # Application Screenshots
-![WhatsApp Image 2025-02-24 at 00 56 37](https://github.com/user-attachments/assets/81155057-95a9-47fa-8287-b1fa0ca94a1e =40x100)
+<img src="https://github.com/user-attachments/assets/81155057-95a9-47fa-8287-b1fa0ca94a1e" width="40" height="100"/>
 
 
 # Welcome to your Expo app 👋
