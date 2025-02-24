@@ -3,8 +3,8 @@ import { Button } from "../button"
 import { styles } from "./styles"
 
 interface ParticipantProps {
-  participant: { id: number; name: string }
-  onRemove: (id: number) => void
+  participant: { id: string; name: string }
+  onRemove: (id: string) => void
 }
 
 export function ParticipantCard(props: ParticipantProps) {
