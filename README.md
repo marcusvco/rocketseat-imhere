@@ -1,5 +1,5 @@
 # Application Screenshots
-<img src="https://github.com/user-attachments/assets/81155057-95a9-47fa-8287-b1fa0ca94a1e" width="360" height="800"/>
+<img src="https://github.com/user-attachments/assets/81155057-95a9-47fa-8287-b1fa0ca94a1e" width="260" height="700"/>
 
 
 # Welcome to your Expo app 👋
